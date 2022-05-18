@@ -1,0 +1,40 @@
+How to share a folder from Windows OS in VMOracle Ubuntu OS
+First I created a folder for which I wanted to share files from my windows host machine
+C:\Users\Aboyade Kehinde\VirtualBox VMs\VM_Share
+The folder name is VM_Share and saved an image file.
+
+Secondly,
+I created a folder in my VM machine for which I wanted to access my files from Windows  OS machine
+cd ~
+mkdir guest_share
+
+To enable sharing, On my VirtualMachine Ubuntu OS, I went menu tab
+Devices -> Shared Folder -> Shared Folder Settings.
+I added a new folder path I created: C:\Users\Aboyade Kehinde\VirtualBox VMs\VM_Share 
+I added the folder name VM_Share, checked the auto mount option and added the mounting point /mnt
+
+On my terminal in VMOracle Ubuntu, I run the command 
+
+sudo apt-get install virtualbox-guest-additions.iso
+
+The .iso file with an image of the OSE edition of the guest additions CD will install in the host directory 
+/usr/share/virtualbox/VBoxGuestAdditions.iso. 
+Mount this .iso file as a CD in your virtual machine's settings. 
+In the guest you will then have access to a CD-ROM with the installer.
+
+To do this
+sudo mount /dev/cdrom /mnt
+cd /mnt
+sudo ./VBoxLinuxAdditions.run
+
+reboot
+
+After VMOracle Ubuntu rebooted,
+I run the command
+sudo mount -t vboxsf VM_Share guest_share
+
+Then I changed to the directory guest_share
+cd guest_share
+ls
+I was able to see my image file I saved :)
+Voila :)

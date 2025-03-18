@@ -1,0 +1,13 @@
+git config --global user.email "me@example.com"
+git config --global user.name "My name"
+
+mkdir checks
+cd checks
+git init
+
+ls -la 
+#list files that start with the dot (.)
+
+ls -l .git/
+#list all the directories in the git directory
+
